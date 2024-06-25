@@ -1,5 +1,5 @@
-# AutoClickerBlum
-AutoClickerBlum is an improved auto-clicker script that automates collecting stars in the Telegram game, Blum. The script supports randomizing star collection and automatic launch of games until tickets run out.
+# Blum Auto Clicker
+Blum Auto Clicker is an improved auto-clicker script that automates collecting stars in the Telegram game, Blum. The script supports randomizing star collection and automatic launch of games until tickets run out.
 
 # How to Use AutoClikerBlum Script
 
@@ -14,7 +14,7 @@ python --version
 pip --version
 ```
 
-### • Step 3: Download AutoClikerBlum from GitHub
+### • Step 3: Download Blum Auto Clicker from GitHub
 Click on the <code style="color : green">Code</code> button, and then click on <code>Download Zip</code> to download the source code.
 
 ### • Step 4: Install the Required Dependencies
