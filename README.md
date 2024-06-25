@@ -1,45 +1,55 @@
 # AutoClickerBlum
-AutoClicker Blum - это адаптированный и улучшенный автокликер для автоматизации процесса сбора звёздочек в игре Blum. Софт поддерживает рандомизацию сбора звёздочек и автоматический запуск игр, пока не кончатся билеты.
+AutoClickerBlum is an improved auto-clicker script that automates collecting stars in the Telegram game, Blum. The script supports randomizing star collection and automatic launch of games until tickets run out.
 
-# Инструкция запуска скрипта AutoCliker Blum
+# How to Use AutoClikerBlum Script
 
-### Шаг 1: Скачайте и установите Python
-Скачайте и установите Python последней версии с [python.org](https://www.python.org/). 
-Обязательно отметьте опцию "Add Python to PATH" перед установкой.
+### • Step 1: Download and Install Python
+Download and install the latest version of Python from [python.org](https://www.python.org/). 
+Make sure to check the <code>Add Python to PATH</code> option during the installation process.
 
-### Шаг 2: Проверьте установку Python и pip
-Откройте командную строку и введите следующие команды для проверки установки Python и pip:
+### • Step 2: Verify Python and pip installation
+Open a command prompt and enter the following commands to verify the installation of Python and pip:
 ```sh
 python --version
 pip --version
 ```
-### Шаг 3: Скачайте код AutoCliker Blum с GitHub
-[КЛИК](https://github.com/Tess-OK/AutoClickerBlum)
 
-### Шаг 4: Установите зависимости
-В командной строке перейдите в папку с файлами проекта и установите зависимости:
+### • Step 3: Download AutoClikerBlum from GitHub
+Click on the <code style="color : green">Code</code> button, and then click on <code>Download Zip</code> to download the source code.
+
+### • Step 4: Install the Required Dependencies
+On the command-line, navigate to the script directory and install the required dependencies:
 ```sh
-cd путь/к/вашей/папке
+cd "path\to\AutoClickerBlum"
 pip install -r requirements.txt
 ```
-Для запуска командной строки сразу в нужной папке, можете ввести cmd в адресной строке папки.
+Alternatively, to launch the command-line directly in the desired directory, you can:<br>
+• Enter <code>cmd</code> in the directory's address bar.<br>
+• Or <code>right-click</code> in the directory and select <code>Open in Terminal</code>.
 
-### Шаг 5: Запустите бота в TelegramDesktop или Web версии.
-Скрипт поддерживает обе версии.
+### • Step 5: Launch the Blum Bot on Telegram Desktop or Telegram Web.
+The script supports both versions.
 
-### Шаг 6: Запустите скрипт
-Запустите скрипт командой:
+### • Step 6: Run the script
+Click on <code>main.py</code> or run the script from command-line:
 ```sh
 python main.py
 ```
-### Шаг 7: Выберите окно с открытым Blum 
-Укажите предложенный порядковый номер
+### • Step 7: Select the Window that is Running the Blum Bot
+Enter the suggested window number.<br>
+• If you are running Blum on Telegram desktop, enter the number in front of the <code>TelegramDesktop</code>.<br>
+• If you are running Blum on Telegram web, enter the number in front of the <code>Blum - Browser Name</code>.
 
-### Шаг 8: Введите значение от 0 до 1 для рандомизации прокликивания звезд, где 1 означает сбор всех звезд. 
-Выбор величины зависит от множества факторов: размера экрана, окна и т.д. Я выбираю значения 1 для сбора около 200-250 звезд. Вам необходимо самостоятельно подобрать необходимое значение.
+### • Step 8: Randomize Star Clicking
+Enter a value between 0 and 1 to randomize star clicking, where 1 means collecting all the stars.<br>
+The choice of value depends on many factors: screen size, window size, etc.
 
-### Шаг 9: Начало работы
-Нажмите F6 для начала работы скрипта.
+• If you enter <code>1</code>, the script will collect around 200-250 stars. <b>But it will increase the risk of automated bot detection and banning of your Blum account</b>.<br>
+• I recommend choosing a value between <code>0.04</code> and <code>0.08</code> to collect around 100-160 stars.
 
-# Дополнительные рекомендации по работе:
-- Уменьшайте размер окна с игрой так, чтобы вокруг него не было полей. Скрипт иногда может кликнуть мимо окна с игрой и появится окно с информацией о закрытии игры.
+### • Step 9: Start the Script
+Press F6 to start/pause the script.
+
+# Additional Recommendations:
+Reduce the size of the game window so that there is less margin around it.<br>
+The script can sometimes click past the game window and a window with information about closing the game will appear.
