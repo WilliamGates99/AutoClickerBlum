@@ -20,7 +20,7 @@ Click on the <code style="color : green">Code</code> button, and then click on <
 ### • Step 4: Install the Required Dependencies
 On the command-line, navigate to the script directory and install the required dependencies:
 ```sh
-cd "path\to\AutoClickerBlum"
+cd "path\to\BlumAutoClicker"
 pip install -r requirements.txt
 ```
 Alternatively, to launch the command-line directly in the desired directory, you can:<br>
