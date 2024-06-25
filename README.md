@@ -48,6 +48,7 @@ Enter a value between 0 and 1 to randomize star clicking, where 1 means collecti
 ### • Step 9: Start the Script
 Press F6 to start/pause the script.
 
-# Additional Recommendations:
-Reduce the size of the game window so that there is less margin around it.<br>
+# Additional Tips:
+• Blum Auto clicker can only be used on the <b>primary monitor</b>, and will not work on other monitors.<br>
+• Reduce the size of the game window so that there is less margin around it.<br>
 The script can sometimes click past the game window and a window with information about closing the game will appear.
