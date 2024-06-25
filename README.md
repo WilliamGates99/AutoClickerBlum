@@ -41,9 +41,7 @@ Enter the suggested window number.<br>
 • If you are running Blum on Telegram web, enter the number in front of the <code>Blum - Browser Name</code>.
 
 ### • Step 8: Randomize Star Clicking
-Enter a value between 0 and 1 to randomize star clicking, where 1 means collecting all the stars.<br>
-The choice of value depends on many factors: screen size, window size, etc.
-
+Enter a value between 0 and 1 to randomize star clicking, where 1 means collecting all the stars. (The choice of value depends on many factors: screen size, window size, etc.)<br>
 • If you enter <code>1</code>, the script will collect around 200-250 stars. <b>But it will increase the risk of automated bot detection and banning of your Blum account</b>.<br>
 • I recommend choosing a value between <code>0.04</code> and <code>0.08</code> to collect around 100-160 stars.
 
