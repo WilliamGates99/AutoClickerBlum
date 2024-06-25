@@ -12,7 +12,7 @@ import win32con
 import warnings
 from pywinauto import Application
 
-# Интервал проверки кнопки "Play" в секундах
+# Interval for checking the "Play" button in seconds
 CHECK_INTERVAL = 5
 
 warnings.filterwarnings("ignore", category=UserWarning, module='pywinauto')
@@ -66,17 +66,17 @@ class AutoClicker:
     def click_at(x, y):
         try:
             if not (0 <= x < win32api.GetSystemMetrics(0) and 0 <= y < win32api.GetSystemMetrics(1)):
-                raise ValueError(f"Координаты вне пределов экрана: ({x}, {y})")
+                raise ValueError(f"Off-screen coordinates: ({x}, {y})")
             win32api.SetCursorPos((x, y))
             win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, x, y, 0, 0)
             win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, x, y, 0, 0)
         except Exception as e:
-            print(f"Ошибка при установке позиции курсора: {e}")
+            print(f"Error when setting cursor position: {e}")
 
     def toggle_script(self):
         self.running = not self.running
-        r_text = "вкл" if self.running else "выкл"
-        self.logger.log(f'Статус изменен: {r_text}')
+        r_text = "running" if self.running else "stopped"
+        self.logger.log(f'Status changed: {r_text}')
 
     def is_near_color(self, hsv_img, center, target_hsvs, radius=8):
         x, y = center
@@ -99,12 +99,12 @@ class AutoClicker:
                 cv2.imread(os.path.join("template_png", "template_play_button.png"), cv2.IMREAD_GRAYSCALE),
                 cv2.imread(os.path.join("template_png", "template_play_button1.png"), cv2.IMREAD_GRAYSCALE),
                 cv2.imread(os.path.join("template_png", "close_button.png"), cv2.IMREAD_GRAYSCALE),
-                cv2.imread(os.path.join("template_png", "captcha.png"), cv2.IMREAD_GRAYSCALE)  # Добавление нового шаблона
+                cv2.imread(os.path.join("template_png", "captcha.png"), cv2.IMREAD_GRAYSCALE)  # Adding a new template
             ]
 
             for template in templates:
                 if template is None:
-                    self.logger.log("Не удалось загрузить файл шаблона.")
+                    self.logger.log("The template file could not be loaded.")
                     continue
 
                 template_height, template_width = template.shape
@@ -123,9 +123,9 @@ class AutoClicker:
                     cY = pt_y + template_height // 2 + monitor["top"]
 
                     self.click_at(cX, cY)
-                    self.logger.log(f'Нажал на кнопку: {cX} {cY}')
+                    self.logger.log(f'Clicked the button: {cX} {cY}')
                     self.clicked_points.append((cX, cY))
-                    break  # Остановить проверку после первого найденного совпадения
+                    break  # Stop checking after the first match found
 
 
     def click_color_areas(self):
@@ -179,7 +179,7 @@ class AutoClicker:
                                 continue
                             cY += 5
                             self.click_at(cX, cY)
-                            self.logger.log(f'Нажал: {cX} {cY}')
+                            self.logger.log(f'clicked: {cX} {cY}')
                             self.clicked_points.append((cX, cY))
 
                     self.check_and_click_play_button(sct, monitor)
@@ -198,44 +198,44 @@ if __name__ == "__main__":
     windows = list_windows_by_title(keywords)
 
     if not windows:
-        print("Нет окон, содержащих указанные ключевые слова Blum или Telegram.")
+        print("There are no windows containing the specified \"Blum\" or \"Telegram\" keywords.")
         exit()
 
-    print("Доступные окна для выбора:")
+    print("Available windows to choose from:")
     for i, (title, hwnd) in enumerate(windows):
         print(f"{i + 1}: {title}")
 
-    choice = int(input("Введите номер окна, в котором открыт бот Blum: ")) - 1
+    choice = int(input("Enter the window number where the Blum bot is open: ")) - 1
     if choice < 0 or choice >= len(windows):
-        print("Неверный выбор.")
+        print("Wrong choice.")
         exit()
 
     hwnd = windows[choice][1]
 
     while True:
         try:
-            target_percentage = input("Введите значение от 0 до 1 для рандомизации прокликивания звезд, где 1 означает сбор всех звезд. (Выбор величины зависит от множества факторов: размера экрана, окна и т.д.) Я выбираю значения 0.04 - 0.06 для сбора около 140-150 звезд. Вам необходимо самостоятельно подобрать необходимое значение: ")
+            target_percentage = input("Enter a value between 0 and 1 to randomize star clicking, where 1 means collecting all the stars. (The choice of value depends on many factors: screen size, window size, etc.)\nI recommend choosing a value between 0.04 and 0.08 to collect around 100-160 stars.\nYou need to select the required value yourself: ")
             target_percentage = target_percentage.replace(',', '.')
             target_percentage = float(target_percentage)
             if 0 <= target_percentage <= 1:
                 break
             else:
-                print("Пожалуйста, введите значение от 0 до 1.")
+                print("Please enter a value between 0 and 1.")
         except ValueError:
-            print("Неверный формат. Пожалуйста, введите число.")
+            print("Invalid format. Please enter a number.")
 
-    logger = Logger("[https://t.me/tvTess]")
-    logger.log("Вас приветствует бесплатный скрипт - автокликер для игры Blum")
-    logger.log('После запуска мини игры нажимайте клавишу F6 на клавиатуре')
+    logger = Logger()
+    logger.log("Welcome to the AutoClickerBlum")
+    logger.log('After launching the Blum mini-game, press the F6 key on your keyboard to start/pause the script.')
     target_colors_hex = ["#c9e100", "#bae70e"]
     nearby_colors_hex = ["#abff61", "#87ff27"]
-    threshold = 0.8  # Порог совпадения шаблона
+    threshold = 0.8  # Threshold of template matching
 
     auto_clicker = AutoClicker(hwnd, target_colors_hex, nearby_colors_hex, threshold, logger, target_percentage)
     try:
         auto_clicker.click_color_areas()
     except Exception as e:
-        logger.log(f"Произошла ошибка: {e}")
+        logger.log(f"An error has occurred: {e}")
     for i in reversed(range(5)):
-        print(f"Скрипт завершит работу через {i}")
+        print(f"The script will stop in {i}")
         time.sleep(1)
